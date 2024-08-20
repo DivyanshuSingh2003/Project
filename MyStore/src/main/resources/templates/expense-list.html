@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expense List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h2>Expense List</h2>
+    <div th:each="expense : ${expenses}">
+        <h3 th:text="${expense.name}">Expense Name</h3>
+        <p>Amount: $<span th:text="${expense.amount}">Amount</span></p>
+        <p>Date: <span th:text="${#dates.format(expense.date, 'yyyy-MM-dd')}">Date</span></p>
+        <p>Description: <span th:text="${expense.description}">Description</span></p>
+        <a th:href="@{/edit/{id}(id=${expense.id})}">Edit</a>
+         <!--  <a th:href="@{/delete/{id}(id=${expense.id})}">delete</a>  -->
+        
+    </div>
+</body>
+</html>
